@@ -1,0 +1,10 @@
+# default parameters for the SparkFun 9DoF Razor IMU M0 factory-firmware driver
+
+rate: 50
+gyro_fsr: 2000
+accel_fsr: 16
+g: 9.80665
+
+# the following are commented-out as they are provided by this package's default launch script
+#set_logger_level_debug: false
+#port: "/dev/imu0"

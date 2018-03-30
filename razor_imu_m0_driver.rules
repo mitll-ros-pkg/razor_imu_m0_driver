@@ -1,0 +1,9 @@
+# udev rules for SparkFun 9DoF Razor IMU M0
+# Create a symlink at /dev/imu
+
+#idVendor           0x1b4f 
+#idProduct          0x9d0f 
+#iManufacturer           1 SparkFun
+#iProduct                2 SFE 9DOF-D21
+SUBSYSTEMS=="usb", KERNEL=="ttyACM*" ATTRS{idVendor}=="1b4f", ATTRS{idProduct}=="9d0f", \
+    SYMLINK+="imu%n"

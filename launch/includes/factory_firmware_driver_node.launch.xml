@@ -1,0 +1,23 @@
+<launch>
+
+  <!-- required arguments provided by upper-level launch script -->
+  <arg name="node_name" />
+  <arg name="debug" />
+  <arg name="output" />
+  <arg name="set_logger_level_debug" />
+  <arg name="port" />
+  <arg name="rosparam_file" />
+
+  <!-- set launch_prefix if debug requsted -->
+  <arg if="$(arg debug)" name="launch_prefix" value="xterm -e gdb --args" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <!-- driver node -->
+  <node pkg="razor_imu_m0_driver" type="factory_firmware_driver_node" name="$(arg node_name)"
+        output="$(arg output)" launch-prefix="$(arg launch_prefix)" >
+    <param name="set_logger_level_debug" value="$(arg set_logger_level_debug)" />
+    <param name="port" value="$(arg port)" />
+    <rosparam command="load" file="$(arg rosparam_file)" />
+  </node>
+
+</launch>

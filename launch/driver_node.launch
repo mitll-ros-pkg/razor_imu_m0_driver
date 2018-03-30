@@ -1,0 +1,32 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <!-- Select the driver type (currently only "factory_firmware" is supported) -->
+  <arg name="driver_type" default="factory_firmware" />
+
+  <!-- Optionally set node name -->
+  <arg name="node_name" default="imu_driver" />
+
+  <!-- Optional debugging arguments -->
+  <arg name="debug" default="false" /> <!-- launch in GDB -->
+  <arg name="output" default="log" /> <!-- output to "screen" or "log" -->
+
+  <!-- launch-configured driver parameters -->
+  <arg name="set_logger_level_debug" default="false" />
+  <arg name="port" default="/dev/imu0" />
+
+  <!-- Optionally provide a path to specify additional parameters in a rosparam yaml file,
+       which will be loaded into nodes' private namespace  -->
+  <arg name="rosparam_file" default="$(find razor_imu_m0_driver)/param/$(arg driver_type).yaml" />
+
+  <!-- driver node include -->
+  <include file="$(find razor_imu_m0_driver)/launch/includes/$(arg driver_type)_driver_node.launch.xml">
+    <arg name="node_name" value="$(arg node_name)" />
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="output" value="$(arg output)" />
+    <arg name="set_logger_level_debug" value="$(arg set_logger_level_debug)" />
+    <arg name="port" value="$(arg port)" />
+    <arg name="rosparam_file" value="$(arg rosparam_file)" />
+  </include>
+
+</launch>

@@ -1,0 +1,5 @@
+<library path="lib/librazor_imu_m0_driver_factory_firmware_driver_nodelet">
+  <class type="razor_imu_m0_driver::FactoryFirmwareDriverNodelet" base_class_type="nodelet::Nodelet">
+    <description>SparkFun 9DoF Razor IMU M0 interface nodelet.</description>
+  </class>
+</library>
